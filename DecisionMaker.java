@@ -1,4 +1,4 @@
-package Ñ¡ÔñÀ§ÄÑÖ¢;
+package é€‰æ‹©å›°éš¾ç—‡;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,11 +12,11 @@ public class DecisionMaker {
     private JFrame mainFrame;
     private JPanel mainPanel;
     private JButton eatButton, playButton, customButton;
-    private List<CustomPanel> customPanels; // ´æ´¢ËùÓĞ×Ô¶¨ÒåÃæ°å
+    private List<CustomPanel> customPanels; // å­˜å‚¨æ‰€æœ‰è‡ªå®šä¹‰é¢æ¿
     private JFrame foodFrame;
     private JPanel foodPanel;
     private JList<String> foodList;
-    private JButton addButton, removeButton, randomButton, returnButton; // Ìí¼Ó·µ»Ø°´Å¥
+    private JButton addButton, removeButton, randomButton, returnButton; // æ·»åŠ è¿”å›æŒ‰é’®
     private DefaultListModel<String> foodListModel;
 
     public DecisionMaker() {
@@ -26,19 +26,21 @@ public class DecisionMaker {
     }
 
     private void initMainFrame() {
-        mainFrame = new JFrame("Ñ¡ÔñÀ§ÄÑÕßÖúÊÖ");
+        mainFrame = new JFrame("é€‰æ‹©å›°éš¾è€…åŠ©æ‰‹");
         mainPanel = new JPanel();
 
-        eatButton = new JButton("³ÔÊ²Ã´");
+        eatButton = new JButton("åƒä»€ä¹ˆ");
         eatButton.addActionListener(e -> {
+        	//æ‰“å¼€ä¸»ç•Œé¢
             foodFrame.setVisible(true);
             mainFrame.setVisible(false);
         });
+        
 
-        playButton = new JButton("ÍæÊ²Ã´");
+        playButton = new JButton("ç©ä»€ä¹ˆ");
         playButton.addActionListener(e -> {
-            // ´ò¿ªÍæÊ²Ã´½çÃæ
-            JFrame playWhatFrame = new JFrame("ÍæÊ²Ã´£¿");
+            // æ‰“å¼€ç©ä»€ä¹ˆç•Œé¢
+            JFrame playWhatFrame = new JFrame("ç©ä»€ä¹ˆï¼Ÿ");
             PlayWhatPanel playWhatPanel = new PlayWhatPanel(playWhatFrame);
             playWhatFrame.setContentPane(playWhatPanel);
             playWhatFrame.pack();
@@ -46,10 +48,10 @@ public class DecisionMaker {
             mainFrame.setVisible(false);
         });
 
-        customButton = new JButton("×Ô¶¨Òå");
+        customButton = new JButton("è‡ªå®šä¹‰");
         customButton.addActionListener(e -> {
-            // µ¯³ö¶Ô»°¿òÈÃÓÃ»§ÊäÈëÃû×Ö´´½¨ĞÂµÄ×Ô¶¨Òå°´Å¥
-            String customName = JOptionPane.showInputDialog("ÇëÊäÈë×Ô¶¨Òå°´Å¥µÄÃû×Ö£º");
+            // å¼¹å‡ºå¯¹è¯æ¡†è®©ç”¨æˆ·è¾“å…¥åå­—åˆ›å»ºæ–°çš„è‡ªå®šä¹‰æŒ‰é’®
+            String customName = JOptionPane.showInputDialog("è¯·è¾“å…¥è‡ªå®šä¹‰æŒ‰é’®çš„åå­—ï¼š");
             if (customName != null && !customName.isEmpty()) {
                 addCustomButton(customName);
             }
@@ -64,8 +66,8 @@ public class DecisionMaker {
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setVisible(true);
 
-        // Ìí¼Ó·µ»ØÖ÷½çÃæµÄ°´Å¥
-        returnButton = new JButton("·µ»ØÖ÷½çÃæ");
+        // æ·»åŠ è¿”å›ä¸»ç•Œé¢çš„æŒ‰é’®
+        returnButton = new JButton("è¿”å›ä¸»ç•Œé¢");
         returnButton.addActionListener(e -> {
             mainFrame.setVisible(true);
         });
@@ -74,7 +76,7 @@ public class DecisionMaker {
     private void addCustomButton(String customName) {
         JButton customButton = new JButton(customName);
         customButton.addActionListener(e -> {
-            // ´ò¿ª×Ô¶¨ÒåÃæ°å
+            // æ‰“å¼€è‡ªå®šä¹‰é¢æ¿
             JFrame customFrame = new JFrame(customName);
             CustomPanel customPanel = new CustomPanel(customFrame);
             customPanels.add(customPanel);
@@ -88,27 +90,27 @@ public class DecisionMaker {
     }
 
     private void initFoodFrame() {
-        foodFrame = new JFrame("³ÔÊ²Ã´£¿");
+        foodFrame = new JFrame("åƒä»€ä¹ˆï¼Ÿ");
 
         foodPanel = new JPanel();
 
         foodListModel = new DefaultListModel<>();
-        foodListModel.addElement("Ã×·¹");
-        foodListModel.addElement("ÃæÌõ");
-        foodListModel.addElement("½È×Ó");
+        foodListModel.addElement("ç±³é¥­");
+        foodListModel.addElement("é¢æ¡");
+        foodListModel.addElement("é¥ºå­");
 
         foodList = new JList<>(foodListModel);
-        addButton = new JButton("Ìí¼Ó");
+        addButton = new JButton("æ·»åŠ ");
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String newFood = JOptionPane.showInputDialog("ÇëÊäÈëĞÂµÄÊ³Îï£º");
+                String newFood = JOptionPane.showInputDialog("è¯·è¾“å…¥æ–°çš„é£Ÿç‰©ï¼š");
                 if (newFood != null && !newFood.isEmpty()) {
                     foodListModel.addElement(newFood);
                 }
             }
         });
-        removeButton = new JButton("É¾³ı");
+        removeButton = new JButton("åˆ é™¤");
         removeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -116,19 +118,19 @@ public class DecisionMaker {
                 if (selectedIndex != -1) {
                     foodListModel.removeElementAt(selectedIndex);
                 } else {
-                    JOptionPane.showMessageDialog(null, "ÇëÑ¡ÔñÒ»¸öÊ³Îï½øĞĞÉ¾³ı£¡");
+                    JOptionPane.showMessageDialog(null, "è¯·é€‰æ‹©ä¸€ä¸ªé£Ÿç‰©è¿›è¡Œåˆ é™¤ï¼");
                 }
             }
         });
 
-        randomButton = new JButton("¿ªÊ¼Ëæ»ú³éÑ¡");
+        randomButton = new JButton("å¼€å§‹éšæœºæŠ½é€‰");
         randomButton.addActionListener(e -> {
             if (!foodListModel.isEmpty()) {
                 Random rand = new Random();
                 int index = rand.nextInt(foodListModel.size());
-                JOptionPane.showMessageDialog(null, "³éÑ¡½á¹û£º" + foodListModel.elementAt(index));
+                JOptionPane.showMessageDialog(null, "æŠ½é€‰ç»“æœï¼š" + foodListModel.elementAt(index));
             } else {
-                JOptionPane.showMessageDialog(null, "ÁĞ±íÎª¿Õ£¬ÇëÏÈÌí¼ÓÊ³Îï£¡");
+                JOptionPane.showMessageDialog(null, "åˆ—è¡¨ä¸ºç©ºï¼Œè¯·å…ˆæ·»åŠ é£Ÿç‰©ï¼");
             }
         });
 
@@ -136,12 +138,12 @@ public class DecisionMaker {
         foodPanel.add(addButton);
         foodPanel.add(removeButton);
         foodPanel.add(randomButton);
-        foodPanel.add(returnButton); // ½«·µ»Ø°´Å¥Ìí¼Óµ½Ê³ÎïÑ¡Ôñ½çÃæ
+        foodPanel.add(returnButton); // å°†è¿”å›æŒ‰é’®æ·»åŠ åˆ°é£Ÿç‰©é€‰æ‹©ç•Œé¢
 
         foodFrame.add(foodPanel);
         foodFrame.pack();
         foodFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        // ³õÊ¼Ê±²»ÏÔÊ¾Ê³ÎïÑ¡Ôñ´°¿Ú
+        // åˆå§‹æ—¶ä¸æ˜¾ç¤ºé£Ÿç‰©é€‰æ‹©çª—å£
         foodFrame.setVisible(false);
     }
 
@@ -156,25 +158,25 @@ public class DecisionMaker {
             setLayout(new BorderLayout());
 
             playListModel = new DefaultListModel<>();
-            playListModel.addElement("ÓÎÓ¾");
-            playListModel.addElement("ÅÜ²½");
-            playListModel.addElement("´òÀºÇò");
+            playListModel.addElement("æ¸¸æ³³");
+            playListModel.addElement("è·‘æ­¥");
+            playListModel.addElement("æ‰“ç¯®çƒ");
 
             playList = new JList<>(playListModel);
             add(new JScrollPane(playList), BorderLayout.CENTER);
 
             JPanel buttonPanel = new JPanel();
-            JButton addButton = new JButton("Ìí¼Ó");
+            JButton addButton = new JButton("æ·»åŠ ");
             addButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    String newPlay = JOptionPane.showInputDialog("ÇëÊäÈëĞÂµÄÍæ·¨£º");
+                    String newPlay = JOptionPane.showInputDialog("è¯·è¾“å…¥æ–°çš„ç©æ³•ï¼š");
                     if (newPlay != null && !newPlay.isEmpty()) {
                         playListModel.addElement(newPlay);
                     }
                 }
             });
-            JButton removeButton = new JButton("É¾³ı");
+            JButton removeButton = new JButton("åˆ é™¤");
             removeButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -182,24 +184,24 @@ public class DecisionMaker {
                     if (selectedIndex != -1) {
                         playListModel.removeElementAt(selectedIndex);
                     } else {
-                        JOptionPane.showMessageDialog(null, "ÇëÑ¡ÔñÒ»¸öÍæ·¨½øĞĞÉ¾³ı£¡");
+                        JOptionPane.showMessageDialog(null, "è¯·é€‰æ‹©ä¸€ä¸ªç©æ³•è¿›è¡Œåˆ é™¤ï¼");
                     }
                 }
             });
-            JButton randomButton = new JButton("¿ªÊ¼Ëæ»úÑ¡Ôñ");
+            JButton randomButton = new JButton("å¼€å§‹éšæœºé€‰æ‹©");
             randomButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if (!playListModel.isEmpty()) {
                         Random rand = new Random();
                         int index = rand.nextInt(playListModel.size());
-                        JOptionPane.showMessageDialog(null, "Ëæ»úÑ¡ÔñµÄÍæ·¨ÊÇ£º" + playListModel.elementAt(index));
+                        JOptionPane.showMessageDialog(null, "éšæœºé€‰æ‹©çš„ç©æ³•æ˜¯ï¼š" + playListModel.elementAt(index));
                     } else {
-                        JOptionPane.showMessageDialog(null, "ÁĞ±íÎª¿Õ£¬ÇëÏÈÌí¼ÓÍæ·¨£¡");
+                        JOptionPane.showMessageDialog(null, "åˆ—è¡¨ä¸ºç©ºï¼Œè¯·å…ˆæ·»åŠ ç©æ³•ï¼");
                     }
                 }
             });
-            JButton returnButton = new JButton("·µ»ØÖ÷½çÃæ");
+            JButton returnButton = new JButton("è¿”å›ä¸»ç•Œé¢");
             returnButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -235,17 +237,17 @@ public class DecisionMaker {
             add(new JScrollPane(itemList), BorderLayout.CENTER);
 
             JPanel buttonPanel = new JPanel();
-            JButton addButton = new JButton("Ìí¼Ó");
+            JButton addButton = new JButton("æ·»åŠ ");
             addButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    String newItem = JOptionPane.showInputDialog("ÇëÊäÈëĞÂµÄ" + customName + "£º");
+                    String newItem = JOptionPane.showInputDialog("è¯·è¾“å…¥æ–°çš„" + customName + "ï¼š");
                     if (newItem != null && !newItem.isEmpty()) {
                         itemListModel.addElement(newItem);
                     }
                 }
             });
-            JButton removeButton = new JButton("É¾³ı");
+            JButton removeButton = new JButton("åˆ é™¤");
             removeButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -253,24 +255,24 @@ public class DecisionMaker {
                     if (selectedIndex != -1) {
                         itemListModel.removeElementAt(selectedIndex);
                     } else {
-                        JOptionPane.showMessageDialog(null, "ÇëÑ¡ÔñÒ»¸ö" + customName + "½øĞĞÉ¾³ı£¡");
+                        JOptionPane.showMessageDialog(null, "è¯·é€‰æ‹©ä¸€ä¸ª" + customName + "è¿›è¡Œåˆ é™¤ï¼");
                     }
                 }
             });
-            JButton randomButton = new JButton("¿ªÊ¼Ëæ»úÑ¡Ôñ");
+            JButton randomButton = new JButton("å¼€å§‹éšæœºé€‰æ‹©");
             randomButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if (!itemListModel.isEmpty()) {
                         Random rand = new Random();
                         int index = rand.nextInt(itemListModel.size());
-                        JOptionPane.showMessageDialog(null, "Ëæ»úÑ¡ÔñµÄ" + customName + "ÊÇ£º" + itemListModel.elementAt(index));
+                        JOptionPane.showMessageDialog(null, "éšæœºé€‰æ‹©çš„" + customName + "æ˜¯ï¼š" + itemListModel.elementAt(index));
                     } else {
-                        JOptionPane.showMessageDialog(null, "ÁĞ±íÎª¿Õ£¬ÇëÏÈÌí¼Ó" + customName + "£¡");
+                        JOptionPane.showMessageDialog(null, "åˆ—è¡¨ä¸ºç©ºï¼Œè¯·å…ˆæ·»åŠ " + customName + "ï¼");
                     }
                 }
             });
-            JButton returnButton = new JButton("·µ»ØÖ÷½çÃæ");
+            JButton returnButton = new JButton("è¿”å›ä¸»ç•Œé¢");
             returnButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
