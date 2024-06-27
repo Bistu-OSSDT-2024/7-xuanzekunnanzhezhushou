@@ -31,6 +31,7 @@ public class DecisionMaker {
 
         eatButton = new JButton("吃什么");
         eatButton.addActionListener(e -> {
+        	//打开吃什么界面。。
             foodFrame.setVisible(true);
             mainFrame.setVisible(false);
         });
